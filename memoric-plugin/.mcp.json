@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "memoric": {
+      "type": "http",
+      "url": "https://memoric.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer ${MEMORIC_API_KEY}"
+      }
+    }
+  }
+}
