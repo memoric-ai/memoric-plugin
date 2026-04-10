@@ -191,7 +191,19 @@ def main():
 
     api_key = os.environ.get("MEMORIC_API_KEY", "")
     if not api_key:
-        log.debug("MEMORIC_API_KEY not set, skipping capture")
+        # Try OAuth token from Claude Code credentials
+        creds_file = os.path.join(os.path.expanduser("~"), ".claude", ".credentials.json")
+        try:
+            with open(creds_file) as f:
+                creds = json.load(f)
+            for key, val in creds.get("mcpOAuth", {}).items():
+                if "memoric" in key.lower():
+                    api_key = val.get("accessToken", "")
+                    break
+        except (OSError, json.JSONDecodeError, KeyError):
+            pass
+    if not api_key:
+        log.debug("No Memoric API key found (env or OAuth), skipping capture")
         return
 
     try:
