@@ -167,6 +167,7 @@ def store_memory(api_key: str, content: str, user_id: str, source: str) -> bool:
         headers={
             "Content-Type": "application/json",
             "Authorization": f"Bearer {api_key}",
+            "User-Agent": "memoric-capture/1.0",
         },
         method="POST",
     )
@@ -216,6 +217,8 @@ def main():
     if not transcript_path:
         log.debug("No transcript_path provided")
         return
+    # Normalize Windows backslashes for cross-platform compatibility
+    transcript_path = transcript_path.replace("\\", "/")
 
     user_id = os.environ.get("MEMORIC_USER_ID", os.environ.get("USER", "default"))
 
