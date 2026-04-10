@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "memoric": {
+      "url": "https://memoric.dev/mcp",
+      "bearer_token_env_var": "MEMORIC_API_KEY"
+    }
+  }
+}

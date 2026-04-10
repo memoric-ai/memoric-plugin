@@ -1,0 +1,27 @@
+{
+  "name": "memoric",
+  "version": "1.0.0",
+  "description": "Persistent memory layer for AI agents. Intelligent deduplication, semantic search, and unlimited retrieval for Codex workflows.",
+  "author": {
+    "name": "Memoric",
+    "email": "hello@memoric.dev"
+  },
+  "homepage": "https://memoric.dev",
+  "repository": "",
+  "license": "MIT",
+  "mcpServers": "./.codex-mcp.json",
+  "interface": {
+    "displayName": "Memoric",
+    "shortDescription": "Persistent memory layer for AI coding workflows",
+    "longDescription": "Memoric adds long-term memory to your AI tools. Store decisions, preferences, project context, and session state across conversations. Memories are automatically deduplicated and retrieved via semantic search.",
+    "developerName": "Memoric",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://memoric.dev",
+    "defaultPrompt": [
+      "Search my memories for recent decisions",
+      "Remember that I prefer TypeScript over JavaScript",
+      "What do you know about my coding preferences?"
+    ]
+  }
+}
