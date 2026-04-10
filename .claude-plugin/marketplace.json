@@ -1,0 +1,18 @@
+{
+  "name": "memoric-plugins",
+  "owner": {
+    "name": "Memoric",
+    "email": "hello@memoric.dev"
+  },
+  "metadata": {
+    "description": "Official Memoric plugins for AI coding assistants"
+  },
+  "plugins": [
+    {
+      "name": "memoric",
+      "source": "./memoric-plugin",
+      "description": "Persistent memory layer for AI agents. Intelligent deduplication, semantic search, and automatic memory capture.",
+      "version": "1.0.0"
+    }
+  ]
+}
