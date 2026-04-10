@@ -21,22 +21,10 @@ if [ ${#PROMPT} -lt 20 ]; then
 fi
 
 # Try OAuth token from Claude Code credentials
-API_KEY=""
 CREDS_FILE="$HOME/.claude/.credentials.json"
+API_KEY=""
 if [ -f "$CREDS_FILE" ]; then
-  API_KEY=$(python3 -c "
-import json, sys
-try:
-    with open('$CREDS_FILE') as f:
-        creds = json.load(f)
-    oauth = creds.get('mcpOAuth', {})
-    for key, val in oauth.items():
-        if 'memoric' in key.lower():
-            print(val.get('accessToken', ''))
-            break
-except:
-    pass
-" 2>/dev/null || echo "")
+  API_KEY=$(jq -r '[.mcpOAuth | to_entries[] | select(.key | test("memoric";"i")) | .value.accessToken] | first // empty' "$CREDS_FILE" 2>/dev/null || echo "")
 fi
 
 # Fall back to env var
