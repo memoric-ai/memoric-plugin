@@ -207,7 +207,9 @@ def main():
         return
 
     try:
-        hook_input = json.loads(sys.stdin.read())
+        raw_input = sys.stdin.read()
+        log.info("Raw stdin: %s", raw_input[:500] if raw_input else "(empty)")
+        hook_input = json.loads(raw_input)
     except (json.JSONDecodeError, OSError):
         log.debug("No valid JSON on stdin")
         return
